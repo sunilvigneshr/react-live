@@ -6,9 +6,13 @@ const errorBoundary = (Element, errorCallback) => {
       errorCallback(error);
     }
 
+    static propTypes() {
+      return Element.propTypes
+    }
+
     render() {
-      return typeof Element === 'function' ? (
-        <Element />
+      return typeof Element === "function" ? (
+        <Element {...this.props} />
       ) : React.isValidElement(Element) ? (
         Element
       ) : null;
